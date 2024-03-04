@@ -23,33 +23,25 @@ public class AdminServiceImp implements AdminService {
     @Override
     public List<AdminDto> get(Integer id) {
         List<Admin> list = adminRepository.search(id);
-        log.info("list" + list);
         List<AdminDto> adminDtos = new ArrayList<>();
-        if(list !=null){
-            for (Admin amin : list) {
-                adminDtos.add(new AdminDto(amin.getId(), amin.getName(),amin.getTen(), getBook(amin.getBooks())));
-            }
-        }
-        else {
-            log.warn("List is null");
-        }
+        for (Admin amin : list) {
 
+            adminDtos.add(new AdminDto(amin.getId(), amin.getName(), amin.getTen(),
+                    getBookDto(amin.getBooks())));
+
+        }
         return adminDtos;
     }
 
-    @Override
-    public List<Admin> getAdmin(Integer id) {
-        return adminRepository.search(id);
-    }
 
     @Override
     public void create(String name, String ten) {
-        adminRepository.create(name,ten);
+        adminRepository.create(name, ten);
     }
 
     @Override
     public void up(Integer id, String name, String ten) {
-        adminRepository.update1(id,name,ten);
+        adminRepository.update1(id, name, ten);
     }
 
     @Override
@@ -58,14 +50,13 @@ public class AdminServiceImp implements AdminService {
     }
 
 
-    private List<BookDto> getBook(List<Book> list) {
+    private List<BookDto> getBookDto(List<Book> list) {
         List<BookDto> bookDtos = new ArrayList<>();
-        if(list != null && !list.isEmpty()){
+        if (list != null && !list.isEmpty()) {
             for (Book book : list) {
                 bookDtos.add(new BookDto(book.getId(), book.getName()));
             }
         }
-
         return bookDtos;
     }
 }

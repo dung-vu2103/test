@@ -14,7 +14,7 @@ import java.util.List;
 public interface AdminService {
     List<AdminDto> get(Integer id);
 
-    List<Admin> getAdmin(Integer id);
+
     void create(String name,String ten);
     void up(Integer id,String name,String ten);
     void delete1(Integer id);
