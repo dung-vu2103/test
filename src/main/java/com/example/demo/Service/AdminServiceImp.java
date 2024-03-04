@@ -30,6 +30,9 @@ public class AdminServiceImp implements AdminService {
                 adminDtos.add(new AdminDto(amin.getId(), amin.getName(),amin.getTen(), getBook(amin.getBooks())));
             }
         }
+        else {
+            log.warn("List is null");
+        }
 
         return adminDtos;
     }
@@ -57,9 +60,12 @@ public class AdminServiceImp implements AdminService {
 
     private List<BookDto> getBook(List<Book> list) {
         List<BookDto> bookDtos = new ArrayList<>();
-        for (Book book : list) {
-            bookDtos.add(new BookDto(book.getId(), book.getName()));
+        if(list != null && !list.isEmpty()){
+            for (Book book : list) {
+                bookDtos.add(new BookDto(book.getId(), book.getName()));
+            }
         }
+
         return bookDtos;
     }
 }
