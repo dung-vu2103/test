@@ -19,9 +19,19 @@ public class AdminController {
         return ResponseEntity.ok().body(adminDtos);
 
     }
-    @PostMapping("/create1")
+    @PostMapping("/create")
     public  ResponseEntity<?> add(@RequestBody Admin admin){
         adminService.create(admin.getName(),admin.getTen());
+        return ResponseEntity.ok().build();
+    }
+    @PostMapping("/update")
+    public  ResponseEntity<?> update(@RequestBody Admin admin){
+        adminService.up(admin.getId(),admin.getName(),admin.getTen());
+        return ResponseEntity.ok().build();
+    }
+    @DeleteMapping("delete")
+    public ResponseEntity<?> delete(@RequestParam(value = "id") Integer id){
+        adminService.delete1(id);
         return ResponseEntity.ok().build();
     }
 }

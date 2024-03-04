@@ -44,6 +44,16 @@ public class AdminServiceImp implements AdminService {
         adminRepository.create(name,ten);
     }
 
+    @Override
+    public void up(Integer id, String name, String ten) {
+        adminRepository.update(id,name,ten);
+    }
+
+    @Override
+    public void delete1(Integer id) {
+        adminRepository.delete(id);
+    }
+
 
     private List<BookDto> getBook(List<Book> list) {
         List<BookDto> bookDtos = new ArrayList<>();

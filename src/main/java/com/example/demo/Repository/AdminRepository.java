@@ -19,5 +19,13 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
             insert into admin(name,ten) values (:name,:ten)
             """, nativeQuery = true)
     void create(@Param("name") String name,@Param("ten") String ten);
+    @Query(value = """
+            update admin set name=:name,ten=:ten where id:=id
+            """, nativeQuery = true)
+    void update(@Param("id") Integer id,@Param("name") String name,@Param("ten") String ten);
+    @Query(value = """
+           delete from admin where id=:id
+            """, nativeQuery = true)
+    void delete(@Param("id") Integer id);
 
 }
