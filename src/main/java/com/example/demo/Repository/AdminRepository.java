@@ -12,8 +12,12 @@ import java.util.List;
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
 
     @Query(value = """
-            select * from admin where (:id is  null or id=:id)
+            select * from admin where (:id is null or id=:id)
             """, nativeQuery = true)
     List<Admin> search(@Param("id") Integer id);
+    @Query(value = """
+            insert into admin(name,ten) values (:name,:ten)
+            """, nativeQuery = true)
+    void create(@Param("name") String name,@Param("ten") String ten);
 
 }

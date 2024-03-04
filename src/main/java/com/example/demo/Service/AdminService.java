@@ -15,5 +15,6 @@ public interface AdminService {
     List<AdminDto> get(Integer id);
 
     List<Admin> getAdmin(Integer id);
+    void create(String name,String ten);
 
 }
