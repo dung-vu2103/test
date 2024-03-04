@@ -46,7 +46,7 @@ public class AdminServiceImp implements AdminService {
 
     @Override
     public void up(Integer id, String name, String ten) {
-        adminRepository.update(id,name,ten);
+        adminRepository.update1(id,name,ten);
     }
 
     @Override
