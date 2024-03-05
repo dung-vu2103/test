@@ -33,5 +33,4 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
            delete from admin where id=:id
             """, nativeQuery = true)
     void delete(@Param("id") Integer id);
-
 }

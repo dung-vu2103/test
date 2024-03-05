@@ -19,4 +19,5 @@ public interface AdminService {
     void up(Integer id,String name,String ten);
     void delete1(Integer id);
 
+    List<Admin> getAllAdmins();
 }

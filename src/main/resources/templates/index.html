@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh sách admin</title>
+</head>
+<body>
+<h1>Danh sách admin</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <!-- Thêm các cột khác nếu cần -->
+    </tr>
+    <!-- Dùng Thymeleaf để lặp qua danh sách các admin và hiển thị -->
+    <tr th:each="admin : ${admins}">
+        <td th:text="${admin.id}"></td>
+        <td th:text="${admin.admin_name}"></td>
+        <!-- Thêm các cột khác tương ứng với các trường trong entity Admin -->
+    </tr>
+</table>
+</body>
+</html>

@@ -51,6 +51,11 @@ public class AdminServiceImp implements AdminService {
         adminRepository.delete(id);
     }
 
+    @Override
+    public List<Admin> getAllAdmins() {
+        return adminRepository.findAll();
+    }
+
 
     private List<BookDto> getBookDto(List<Book> list) {
         List<BookDto> bookDtos = new ArrayList<>();
