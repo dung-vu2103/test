@@ -16,9 +16,9 @@ public class Admin implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+    @Column(name = "admin_name")
+    private String admin_name;
     @Column(name = "ten")
-    private String name;
-    @Column(name = "ho")
     private String ten;
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Book> books;

@@ -16,7 +16,7 @@ public class AdminDto {
 
     private Integer id;
 
-    private String name;
+    private String admin_name;
     private String ten;
     private List<BookDto> book;
 }

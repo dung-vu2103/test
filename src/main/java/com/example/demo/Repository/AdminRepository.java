@@ -12,21 +12,22 @@ import java.util.List;
 
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
- @Modifying
+
     @Query(value = """
             select * from admin where (:id is null or id=:id)
             """, nativeQuery = true)
     List<Admin> search(@Param("id") Integer id);
- @Modifying
+    @Modifying
     @Query(value = """
-            insert into admin(name,ten) values (:name,:ten)
-            """, nativeQuery = true)
-    void create(@Param("name") String name,@Param("ten") String ten);
- @Modifying
+         insert into admin(admin_name, ten) values (:admin_name, :ten)
+         """, nativeQuery = true)
+    void create(@Param("admin_name") String adminName, @Param("ten") String ten);
+
+    @Modifying
     @Query(value = """
-            update admin set name=:name,ten=:ten where id=:id
+            update admin set admin_name=:admin_name,ten=:ten where id=:id
             """, nativeQuery = true)
-    void update1(@Param("id") Integer id,@Param("name") String name,@Param("ten") String ten);
+    void update1(@Param("id") Integer id,@Param("admin_name") String adminname,@Param("ten") String ten);
  @Modifying
     @Query(value = """
            delete from admin where id=:id

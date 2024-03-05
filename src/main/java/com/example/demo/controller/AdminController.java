@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.Dto.AdminDto;
 import com.example.demo.Service.AdminService;
 import com.example.demo.model.Admin;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
+    @Autowired
     AdminService adminService;
 
     @GetMapping("/get")
@@ -21,12 +23,12 @@ public class AdminController {
     }
     @PostMapping("/create")
     public  ResponseEntity<?> add(@RequestBody Admin admin){
-        adminService.create(admin.getName(),admin.getTen());
+        adminService.create(admin.getAdmin_name(),admin.getTen());
         return ResponseEntity.ok().build();
     }
     @PostMapping("/update")
     public  ResponseEntity<?> update(@RequestBody Admin admin){
-        adminService.up(admin.getId(),admin.getName(),admin.getTen());
+        adminService.up(admin.getId(),admin.getAdmin_name(),admin.getTen());
         return ResponseEntity.ok().build();
     }
     @DeleteMapping("delete")

@@ -23,10 +23,12 @@ public class AdminServiceImp implements AdminService {
     @Override
     public List<AdminDto> get(Integer id) {
         List<Admin> list = adminRepository.search(id);
+        log.info("listtt" +list);
+        log.info("idd" +id);
         List<AdminDto> adminDtos = new ArrayList<>();
         for (Admin amin : list) {
 
-            adminDtos.add(new AdminDto(amin.getId(), amin.getName(), amin.getTen(),
+            adminDtos.add(new AdminDto(amin.getId(), amin.getAdmin_name(), amin.getTen(),
                     getBookDto(amin.getBooks())));
 
         }
