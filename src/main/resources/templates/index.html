@@ -5,17 +5,19 @@
 </head>
 <body>
 <h1>Danh sách admin</h1>
-<table>
+<table border="1px solid black">
     <tr>
         <th>ID</th>
-        <th>Tên</th>
+        <th>ADMIN_NAME</th>
+        <th>TEN</th>
         <!-- Thêm các cột khác nếu cần -->
     </tr>
     <!-- Dùng Thymeleaf để lặp qua danh sách các admin và hiển thị -->
     <tr th:each="admin : ${admins}">
         <td th:text="${admin.id}"></td>
         <td th:text="${admin.admin_name}"></td>
-        <!-- Thêm các cột khác tương ứng với các trường trong entity Admin -->
+        <td th:text="${admin.ten}"></td>
+
     </tr>
 </table>
 </body>

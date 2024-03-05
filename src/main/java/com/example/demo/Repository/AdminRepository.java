@@ -17,6 +17,10 @@ public interface AdminRepository extends JpaRepository<Admin, Integer> {
             select * from admin where (:id is null or id=:id)
             """, nativeQuery = true)
     List<Admin> search(@Param("id") Integer id);
+    @Query(value = """
+            select * from admin
+            """, nativeQuery = true)
+    List<Admin> search1();
     @Modifying
     @Query(value = """
          insert into admin(admin_name, ten) values (:admin_name, :ten)

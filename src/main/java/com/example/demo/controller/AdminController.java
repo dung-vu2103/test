@@ -3,25 +3,25 @@ package com.example.demo.controller;
 import com.example.demo.Dto.AdminDto;
 import com.example.demo.Service.AdminService;
 import com.example.demo.model.Admin;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
+@Log4j2
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
     @Autowired
     AdminService adminService;
-    @GetMapping("/index")
-    public String index(Model model) {
-        // Lấy danh sách các admin từ service
+  @GetMapping("/index")
+    public String index(HttpServletRequest request,Model model) {
         List<Admin> admins = adminService.getAllAdmins();
-        // Gửi danh sách admin đến trang index
+        log.info("adminnnn" + admins);
         model.addAttribute("admins", admins);
-        return "index"; // Tên của file HTML trong thư mục templates
+        return "index";
     }
     @GetMapping("/get")
     public ResponseEntity<?> get1(@RequestParam(value = "id", required = false) Integer id) {

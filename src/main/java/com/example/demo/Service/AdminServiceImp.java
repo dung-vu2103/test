@@ -53,7 +53,7 @@ public class AdminServiceImp implements AdminService {
 
     @Override
     public List<Admin> getAllAdmins() {
-        return adminRepository.findAll();
+        return adminRepository.search1();
     }
 
 
